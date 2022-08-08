@@ -14,7 +14,7 @@ export default class Book {
     this.timeStamp = Book.timeStamp();
   }
 
-  addBook() {
+  addBook = () => {
     collections.addBook(this);
     this.render();
   }
@@ -37,7 +37,7 @@ export default class Book {
       } else {
         bookElement.classList.add('book');
       }
-      function timeStamp() {
+      const timeStamp = () => {
         let time = '';
         if (Book.timeStamp() - book.timeStamp < 1) {
           time = 'Just now';
@@ -45,7 +45,7 @@ export default class Book {
           time = `${Book.timeStamp() - book.timeStamp} minutes ago`;
         }
         return time;
-      }
+      };
       bookElement.innerHTML = `
               <p>'${book.title}' by ${book.author}</p>
               <p class='timestamp'>${timeStamp()}</p>
@@ -62,7 +62,7 @@ export default class Book {
     });
   }
 
-  removeBook(index) {
+  removeBook = (index) => {
     collections.removeBook(index);
     localStorage.setItem('collections', JSON.stringify(collections.getBooks()));
     this.render();
